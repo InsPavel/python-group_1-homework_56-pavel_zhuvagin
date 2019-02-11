@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import './App.css';
 import Field from "./components/Field/Field";
 import Cell from "./components/Field/Cell/Cell";
+import Counter from "./components/Counter/Counter";
+
 
 
 const FIELD_SIZE = 6;
@@ -58,6 +60,9 @@ class App extends Component {
                         />
                     )}
                 </Field>
+                <Counter
+                    counter={this.state.counter}
+                />
             </div>
         );
     }
