@@ -18,6 +18,7 @@ class App extends Component {
         this.state = {
             cells: this.generateCells(),
             counter: 0,
+            status: true
         }
     }
 
@@ -38,8 +39,14 @@ class App extends Component {
     openCell = (id) => {
         let cell = {...this.state.cells[id]};
         let state = {...this.state};
+            if(this.state.status) {
             if (!cell.open) {
                 cell.open = true;
+            if (cell.open && cell.hasItem) {
+                state.status = false;
+                alert('Поздравляем! Элемент найден за ' + state.counter + ' попытки(ок)')
+            }
+
             let cells = [...this.state.cells];
 
             cells[id] = cell;
@@ -47,6 +54,7 @@ class App extends Component {
             state.counter = state.counter + 1;
 
             this.setState(state);
+            }
         }
     };
 
@@ -55,6 +63,7 @@ class App extends Component {
         let state = {...this.state};
         state.cells = this.generateCells();
         state.counter = 0;
+        state.status = true;
 
         this.setState(state);
     };
