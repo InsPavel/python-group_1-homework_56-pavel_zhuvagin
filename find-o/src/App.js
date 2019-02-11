@@ -3,6 +3,8 @@ import './App.css';
 import Field from "./components/Field/Field";
 import Cell from "./components/Field/Cell/Cell";
 import Counter from "./components/Counter/Counter";
+import Button from "./components/Button/Button";
+
 
 
 
@@ -48,6 +50,15 @@ class App extends Component {
         }
     };
 
+    buttonReset = () => {
+
+        let state = {...this.state};
+        state.cells = this.generateCells();
+        state.counter = 0;
+
+        this.setState(state);
+    };
+
     render() {
         return (
             <div className="container">
@@ -62,6 +73,9 @@ class App extends Component {
                 </Field>
                 <Counter
                     counter={this.state.counter}
+                />
+                <Button
+                    onReset={this.buttonReset}
                 />
             </div>
         );
